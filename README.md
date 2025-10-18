@@ -1,17 +1,33 @@
-1. Brief Description of the Project
-This project is a simple web application that runs inside a Docker container. It uses an Nginx web server to serve static web content (such as HTML, CSS, and JavaScript files). Docker is used to package the application and its dependencies into an image so it can run consistently across different environments.
 
-2. Docker Build Command
+# Project Overview: Simple Nginx Web App in Docker
+
+This project creates a simple web application that is encapsulated within a **Docker container**. It utilizes the **Nginx** web server to efficiently serve **static web content** (like HTML, CSS, and JavaScript). The main goal of using Docker is to package the application and all its necessary dependencies into an **image**, ensuring it runs consistently and reliably across various environments.
+
+
+
+## Docker Build Command
+
+The command below builds the Docker image from the current directory:
+
+```bash
 docker build -t my-nginx-app .
-docker build → builds a Docker image.
--t my-nginx-app → tags the image with the name my-nginx-app.
-. → tells Docker to use the current directory (which contains the Dockerfile).
+```
 
-3. Docker Run Comman
+  * **`docker build`**: Initiates the process of creating a Docker image.
+  * **`-t my-nginx-app`**: **Tags** the resulting image with the name `my-nginx-app`, making it easy to reference.
+  * **`.`**: Specifies the build context, telling Docker to look for the **`Dockerfile`** in the **current directory**.
+
+
+
+## Docker Run Command
+
+This command starts a new container based on the built image and configures its networking:
+
+```bash
 docker run -d -p 8888:80 my-nginx-app
-docker run → runs a new container.
--d → runs it in detached mode (in the background).
--p 8888:80 → maps port 8888 on your host to port 80 inside the container.
-my-nginx-app → specifies the image to use.
+```
 
-
+  * **`docker run`**: Executes a new container from a specified image.
+  * **`-d`**: Runs the container in **detached mode** (in the background).
+  * **`-p 8888:80`**: **Port mapping**. This crucial flag maps **port 8888** on your host machine to **port 80** inside the container (the port Nginx is listening on).
+  * **`my-nginx-app`**: The name of the Docker image to be used for the container.
